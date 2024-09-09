@@ -74,7 +74,10 @@ const columnsShad: ColumnDef<DrugsListTable>[] = [
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={addFavorite}>
+              <DropdownMenuItem
+                onClick={addFavorite}
+                disabled={!!favoriteList.find((item) => item.id === drugs.id)}
+              >
                 <div className="flex gap-1">
                   <div className="flex justify-between items-center">
                     <IoIosAddCircleOutline className="h-5 w-5" />
