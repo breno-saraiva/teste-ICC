@@ -15,7 +15,7 @@ import {
 } from "@/shared/components/ui/dropdown-menu";
 import { DrugsListTable } from "@/types/dataTable";
 import { ColumnDef } from "@tanstack/react-table";
-import { FaRegStar } from "react-icons/fa6";
+import { FaRegStar, FaStar } from "react-icons/fa6";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { FaTrashAlt } from "react-icons/fa";
@@ -66,7 +66,11 @@ const columnsShad: ColumnDef<DrugsListTable>[] = [
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 p-0">
-                <FaRegStar className="h-4 w-4" />
+                {!!favoriteList.find((item) => item.id === drugs.id) ? (
+                  <FaStar className="h-4 w-4 text-yellow-400" />
+                ) : (
+                  <FaRegStar className="h-4 w-4" />
+                )}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
